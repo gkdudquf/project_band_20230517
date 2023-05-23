@@ -1,0 +1,71 @@
+* {
+
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
+}
+
+.login-form {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+}
+
+.user-info {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#section {
+    height: 800px;
+}
+
+#mainRight a {
+    color: #198754;
+}
+
+#mainLeft {
+    float: left;
+    position: relative;
+    left: 150px;
+    width: 30%
+}
+
+#mainRight {
+    float: left;
+    position: relative;
+    top: 30px;
+    left: 340px;
+    width: 30%;
+}
+
+#footer {
+    background-color: black;
+    color: white;
+    height: 50px;
+    position: relative;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    float: left;
+    display: inline-block;
+}
+
+#header {
+    height: 150px;
+}
+
+#header ul li.login-name a{
+    float: right;
+    text-decoration: none;
+    color: black;
+}
+
+
+
