@@ -4,13 +4,22 @@
 
 
 <mapper namespace="Member">
-    <select id="memberEmail" parameterType="String">
+    <select id="emailCheck" parameterType="String" resultType="member">
         select * from member_table where memberEmail=#{memberEmail}
     </select>
 
     <select id="save" parameterType="member">
         select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
     </select>
+
+    <select id="nicknameCheck" parameterType="String" resultType="member">
+        select * from member_table where memberNickname=#{memberNickname}
+    </select>
+
+    <insert id="memberSave" parameterType="member">
+        insert into member_table(memberEmail, memberPassword, memberNickname, memberName, memberLocal, memberMobile)
+            values (#{memberEmail}, #{memberPassword}, #{memberNickname}, #{memberName}, #{memberLocal}, #{memberMobile})
+    </insert>
 </mapper>
 
 

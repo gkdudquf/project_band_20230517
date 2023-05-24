@@ -2,6 +2,7 @@
 
     font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
+
 }
 
 .login-form {
@@ -19,7 +20,7 @@
 }
 
 #section {
-    height: 800px;
+    height: 1000px;
 }
 
 #mainRight a {
@@ -52,7 +53,7 @@ ul {
     list-style-type: none;
 }
 
-li {
+li button{
     float: left;
     display: inline-block;
 }
@@ -63,9 +64,9 @@ li {
 
 #header ul li.login-name a{
     float: right;
+    display: inline-block;
     text-decoration: none;
     color: black;
+    margin-top: 5px;
 }
-
-
 

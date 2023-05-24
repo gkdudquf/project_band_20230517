@@ -16,14 +16,30 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping("save")
+    @GetMapping("/save")
     public String saveForm() {
         return "/memberPages/save";
     }
 
     @PostMapping("/emailCheck")
     public ResponseEntity emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        System.out.println("memberEmail = " + memberEmail);
         MemberDTO memberDTO = memberService.emailCheck(memberEmail);
+        System.out.println("memberDTO = " + memberDTO);
+        if (memberDTO == null) {
+//            System.out.println("memberDTO = " + memberDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+//            System.out.println("memberDTO = " + memberDTO);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
+
+    @PostMapping("/nicknameCheck")
+    public ResponseEntity nicknameCheck(@RequestParam("memberNickname") String memberNickname) {
+        System.out.println("memberNickname = " + memberNickname);
+        MemberDTO memberDTO = memberService.nicknameCheck(memberNickname);
+        System.out.println("memberDTO = " + memberDTO);
         if (memberDTO == null) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
@@ -31,14 +47,24 @@ public class MemberController {
         }
     }
 
+    @PostMapping("/save")
+    public String memberSave(@ModelAttribute MemberDTO memberDTO) {
+        memberService.memberSave(memberDTO);
+        return "/memberPages/login";
+    }
 
     @PostMapping("login")
     public ResponseEntity login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO dto = memberService.loginCheck(memberDTO);
+        if (dto == null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } else {
+            session.setAttribute("loginNickname", dto.getMemberNickname());
+            session.setAttribute("loginAddress", dto.getMemberLocal());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
-    @GetMapping("/mypages")
-    public String mypage(@RequestParam("email") String email) {
 
-    }
+
 }

@@ -19,4 +19,11 @@ public class MemberService {
     }
 
 
+    public MemberDTO nicknameCheck(String memberNickname) {
+        return memberRepository.nicknameCheck(memberNickname);
+    }
+
+    public void memberSave(MemberDTO memberDTO) {
+        memberRepository.memberSave(memberDTO);
+    }
 }

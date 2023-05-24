@@ -19,4 +19,11 @@ public class MemberRepository {
     }
 
 
+    public MemberDTO nicknameCheck(String memberNickname) {
+        return sql.selectOne("Member.nicknameCheck", memberNickname);
+    }
+
+    public void memberSave(MemberDTO memberDTO) {
+        sql.insert("Member.memberSave", memberDTO);
+    }
 }
