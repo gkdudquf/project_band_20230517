@@ -23,8 +23,8 @@
     <div class="container">
         <h2>모임 생성하기</h2> <br>
     </div>
-    <form style="width: 700px;" action="/group/groupSave" method="post" class="container" enctype="multipart/form-data">
-        <img id="uploadedImage" src="/resources/img/profile.png" alt="" style="max-width: 500px; max-height: 200px;
+    <form style="width: 700px;" action="/group/save" method="post" class="container" enctype="multipart/form-data">
+        <img id="uploadedImage" alt="" style="max-width: 500px; max-height: 200px;
              border-radius: 80px; display:block; margin:auto;"><br>
         <input type="file" name="groupProfileFile" multiple onchange="showImage(this);"> <br>
 
@@ -38,7 +38,7 @@
         <br>
 
         <h6>모임 소개글</h6>
-        <textarea name="groupInfo" id="group_info" cols="30" rows="10" class="form-control"></textarea>
+        <textarea name="groupInfo" id="group_info" cols="30" rows="10" class="form-control"></textarea> <br>
 
         <div class="row">
             <div class="col d-grid">
@@ -54,21 +54,21 @@
     const group_name_check = () => {
         const groupName = document.getElementById("group_name").value;
         const result = document.getElementById("name_check_result");
-
         $.ajax ({
             type: "post",
             url: "/group/groupNameCheck",
             data: {
               "groupName": groupName
             },
-            success: function (res) {
+            success: function () {
                 result.innerHTML = "사용가능한 모임이름입니다"
+                result.style.color = "green";
             },
             error: function () {
                 result.innerHTML = "중복된 모임이름입니다"
                 result.style.color = "red";
             }
-        })
+        });
     }
 
     function showImage(input) {

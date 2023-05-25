@@ -1,16 +1,40 @@
 package com.icia.band.service;
 
 import com.icia.band.dto.GroupDTO;
+import com.icia.band.dto.GroupFileDTO;
+import com.icia.band.dto.MemberDTO;
 import com.icia.band.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.IOException;
 
 @Service
 public class GroupService {
     @Autowired
     private GroupRepository groupRepository;
 
-    public GroupDTO groupNameCheck(String groupName) {
+    public String groupNameCheck(String groupName) {
         return groupRepository.groupNameCheck(groupName);
+    }
+
+    public void save(GroupDTO groupDTO, MemberDTO memberDTO) throws IOException {
+        if (groupDTO.getGroupProfileFile().isEmpty()) {
+            groupDTO.setCreateMemberNickname(memberDTO.getMemberNickname());
+            groupDTO.setCreateMemberLocal(memberDTO.getMemberLocal());
+            groupRepository.save(groupDTO);
+        } else {
+            GroupDTO dto = groupRepository.save(groupDTO);
+            String originalFilename = groupDTO.getGroupProfileFile().getOriginalFilename();
+            String storedFileName = System.currentTimeMillis() + "-" + originalFilename;
+            GroupFileDTO groupFileDTO = new GroupFileDTO();
+            groupFileDTO.setOriginalFileName(originalFilename);
+            groupFileDTO.setStoredFileName(storedFileName);
+            groupFileDTO.setGroupId(dto.getId());
+            String savePath = "C:\\Users\\user\\Desktop\\인천일보\\2. 수업\\5.개인프로젝트(band)\\groupProfileFile\\" + storedFileName;
+            groupDTO.getGroupProfileFile().transferTo(new File(savePath));
+            groupRepository.saveFile(groupFileDTO);
+        }
     }
 }

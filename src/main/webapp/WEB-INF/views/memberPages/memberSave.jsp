@@ -99,12 +99,10 @@
             success: function (res) {
                 emailResult.style.color = "green";
                 emailResult.innerHTML = "사용가능한 이메일입니다";
-                return true;
             },
             error: function () {
                 emailResult.style.color = "red";
                 emailResult.innerHTML = "중복된 이메일입니다";
-                return false;
             }
 
         })

@@ -4,9 +4,19 @@
 
 
 <mapper namespace="Group">
-    <select id="groupNameCheck" parameterType="String" resultType="group">
-        select * from group_table where groupName=#{groupName}
+    <select id="groupNameCheck" parameterType="String" resultType="String">
+        select groupName from group_table where groupName=#{groupName}
     </select>
+
+    <insert id="save" parameterType="group" useGeneratedKeys="true" keyProperty="id">
+        insert into group_table(groupName, groupInfo, createMemberNickname, createMemberLocal)
+            values (#{groupName}, #{groupInfo}, #{createMemberNickname}, #{createMemberLocal})
+    </insert>
+
+    <insert id="saveFile" parameterType="groupFile">
+        insert into group_file_table(originalFileName, storedFileName, groupId)
+            values (#{originalFileName}, #{storedFileName}, #{groupId})
+    </insert>
 </mapper>
 
 
