@@ -41,26 +41,6 @@
 <%@include file="component/footer.jsp"%>
 </body>
 <script>
-    const login_check = () => {
-        const email = document.getElementById("login-user-email").value;
-        const password = document.getElementById("login-user-password").value;
-
-        $.ajax ({
-            type: "post",
-            url: "/member/login",
-            data: {
-                "email": email,
-                "password": password
-            },
-            success: function (res) {
-                location.href = "/member/myPage";
-            },
-            error: function () {
-                alert("이메일 혹은 비밀번호를 확인해주세요");
-            }
-        });
-    }
-
     const goSave = () => {
         location.href = "/member/save"
     }

@@ -19,7 +19,7 @@
             </c:when>
             <c:otherwise>
                 <li class="index-btn">
-                    <button type="button" class="btn btn-outline-dark" onclick="goLoginMain()">BAND</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="goMyGroupList()">BAND</button>
                 </li>
             </c:otherwise>
         </c:choose>
@@ -52,8 +52,8 @@
         location.href = "/";
     }
 
-    const goLoginMain = () => {
-        location.href = "/member/loginMain";
+    const goMyGroupList = () => {
+        location.href = "/group/myGroupList";
     }
 
 

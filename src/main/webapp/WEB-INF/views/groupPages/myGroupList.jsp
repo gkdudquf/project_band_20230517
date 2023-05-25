@@ -21,11 +21,14 @@
 
 <div id="section">
 <h6>내가 가입한 그룹 리스트</h6>
+    <button onclick="goMyGroupSave()">그룹만들기</button>
 </div>
 
 <%@include file="../component/footer.jsp"%>
 </body>
 <script>
-
+    const goMyGroupSave = () => {
+        location.href = "/group/save";
+    }
 </script>
 </html>

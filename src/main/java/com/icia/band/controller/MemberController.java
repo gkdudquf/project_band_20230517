@@ -25,10 +25,8 @@ public class MemberController {
         MemberDTO memberDTO = memberService.emailCheck(memberEmail);
         System.out.println("memberDTO = " + memberDTO);
         if (memberDTO == null) {
-//            System.out.println("memberDTO = " + memberDTO);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-//            System.out.println("memberDTO = " + memberDTO);
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
@@ -45,11 +43,18 @@ public class MemberController {
         }
     }
 
+    @GetMapping("/save")
+    public String saveForm() {
+        return "/memberPages/memberSave";
+    }
+
     @PostMapping("/save")
     public String memberSave(@ModelAttribute MemberDTO memberDTO) {
         memberService.memberSave(memberDTO);
-        return "/memberPages/login";
+        return "/memberPages/memberLogin";
     }
+
+
 
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
@@ -60,9 +65,10 @@ public class MemberController {
         } else {
             session.setAttribute("loginNickname", dto.getMemberNickname());
             session.setAttribute("loginLocal", dto.getMemberLocal());
-            return "redirect:/member/loginMain";
+            return "/groupPages/myGroupList";
         }
     }
+
 
     @GetMapping("/myInfo")
     public String myPageForm(HttpSession session, Model model) {
@@ -78,10 +84,6 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/loginMain")
-    public String loginMain() {
-        return "/memberPages/loginMain";
-    }
 
 
 }
