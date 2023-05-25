@@ -20,7 +20,7 @@
 <%@include file="../component/header.jsp"%>
 
 <div id="section">
-<h6>마이페이징</h6>
+<h6>내가 가입한 그룹 리스트</h6>
 </div>
 
 <%@include file="../component/footer.jsp"%>

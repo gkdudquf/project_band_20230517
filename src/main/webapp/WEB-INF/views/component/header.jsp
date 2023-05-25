@@ -6,13 +6,43 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
 <div id="header" class="container">
     <ul>
-        <li>
-            <button type="button" class="btn btn-outline-dark" onclick="goIndex()">BAND</button>
-        </li>
-        <li class="login-name" id="login-area"></li>
+        <c:choose>
+            <c:when test="${sessionScope.loginNickname == null}">
+                <li class="index-btn">
+                    <button type="button" class="btn btn-outline-dark" onclick="goIndex()">BAND</button>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="index-btn">
+                    <button type="button" class="btn btn-outline-dark" onclick="goLoginMain()">BAND</button>
+                </li>
+            </c:otherwise>
+        </c:choose>
+
+        <div class="login-name">
+        <c:choose>
+            <c:when test="${sessionScope.loginNickname == null}">
+                <a href='/member/save'>회원가입</a>
+            </c:when>
+            <c:otherwise>
+                <div class="dropdown">
+                    <i class="bi bi-person-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/member/myInfo">내 정보</a></li>
+                        <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/member/logout">로그아웃</a></li>
+                    </ul>
+                </div>
+            </c:otherwise>
+        </c:choose>
+        </div>
     </ul>
 
 
@@ -22,15 +52,9 @@
         location.href = "/";
     }
 
-    const loginArea = document.getElementById("login-area");
-    const loginNickname = '${sessionScope.loginNickname}';
-    if (loginNickname.length != 0) {
-        loginArea.innerHTML = loginNickname + "님 환영해요!" +
-            "<a href='member/mypage'>mypage</a>" +
-            "<a href='member/logout'>logout</a>";
-    } else {
-        loginArea.innerHTML = "<a href='/member/save'>회원가입</a>";
-
+    const goLoginMain = () => {
+        location.href = "/member/loginMain";
     }
+
 
 </script>

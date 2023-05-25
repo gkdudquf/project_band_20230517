@@ -1,5 +1,4 @@
 * {
-
     font-family: 'Noto Sans KR', sans-serif;
     text-align: center;
 
@@ -19,8 +18,10 @@
     border-radius: 5px;
 }
 
+
 #section {
     height: 1000px;
+    margin: auto;
 }
 
 #mainRight a {
@@ -53,7 +54,7 @@ ul {
     list-style-type: none;
 }
 
-li button{
+li.index-btn{
     float: left;
     display: inline-block;
 }
@@ -62,11 +63,35 @@ li button{
     height: 150px;
 }
 
-#header ul li.login-name a{
+.login-name{
     float: right;
     display: inline-block;
     text-decoration: none;
     color: black;
     margin-top: 5px;
+}
+
+.dropdown i {
+    color: black;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.dropdown-menu li {
+    /*box-sizing: border-box;*/
+    /*solid-color: black;*/
+    /*border-bottom-color: white;*/
+    border-color: black;
+
+}
+
+.dropdown button {
+    background-color: white;
+    box-sizing: border-box;
+    border-bottom-color: darkgrey;
+}
+
+#memberSaveForm {
+    margin: auto;
 }
 

@@ -26,4 +26,6 @@ public class MemberService {
     public void memberSave(MemberDTO memberDTO) {
         memberRepository.memberSave(memberDTO);
     }
+
+
 }

@@ -15,7 +15,7 @@ public class MemberRepository {
         return sql.selectOne("Member.emailCheck", memberEmail);
     }
     public MemberDTO loginCheck(MemberDTO memberDTO) {
-        return sql.selectOne("Member.save", memberDTO);
+        return sql.selectOne("Member.loginCheck", memberDTO);
     }
 
 
@@ -26,4 +26,6 @@ public class MemberRepository {
     public void memberSave(MemberDTO memberDTO) {
         sql.insert("Member.memberSave", memberDTO);
     }
+
+
 }

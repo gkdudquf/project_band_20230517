@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 
 @Controller
 @RequestMapping("/member")
@@ -16,10 +18,6 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping("/save")
-    public String saveForm() {
-        return "/memberPages/save";
-    }
 
     @PostMapping("/emailCheck")
     public ResponseEntity emailCheck(@RequestParam("memberEmail") String memberEmail) {
@@ -53,18 +51,37 @@ public class MemberController {
         return "/memberPages/login";
     }
 
-    @PostMapping("login")
-    public ResponseEntity login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO dto = memberService.loginCheck(memberDTO);
+        System.out.println("dto = " + dto);
         if (dto == null) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return "/index";
         } else {
             session.setAttribute("loginNickname", dto.getMemberNickname());
-            session.setAttribute("loginAddress", dto.getMemberLocal());
-            return new ResponseEntity<>(HttpStatus.OK);
+            session.setAttribute("loginLocal", dto.getMemberLocal());
+            return "redirect:/member/loginMain";
         }
     }
 
+    @GetMapping("/myInfo")
+    public String myPageForm(HttpSession session, Model model) {
+        String memberNickname = (String) session.getAttribute("loginNickname");
+        MemberDTO memberDTO = memberService.nicknameCheck(memberNickname);
+        model.addAttribute("member", memberDTO);
+        return "/memberPages/myInfo";
+    }
+
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/loginMain")
+    public String loginMain() {
+        return "/memberPages/loginMain";
+    }
 
 
 }

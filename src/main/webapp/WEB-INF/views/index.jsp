@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
 <html>
 <head>
     <title>Title</title>
@@ -26,15 +27,15 @@
         <h1>모임이 쉬워진다!</h1>
         <h1>우리끼리 밴드</h1>
         <h4>당신의 모임도 BAND로 시작하세요.</h4> <br>
-        <div class="login-form">
+        <form action="/member/login" method="post" class="login-form">
             <h2>로그인</h2> <br>
-            <input type="text" id="login-user-email" name="loginUserEmail" placeholder="아이디" class="user-info"> <br>
-            <input type="password" id="login-user-password" name="loginUserPassword" placeholder="비밀번호" class="user-info"> <br>
-            <input type="button" value="로그인" class="submit btn btn-success" onclick="login_check()"> <br><br>
+            <input type="text" id="login-user-email" name="memberEmail" placeholder="아이디" class="user-info"> <br>
+            <input type="password" id="login-user-password" name="memberPassword" placeholder="비밀번호" class="user-info"> <br>
+            <input type="submit" value="로그인" class="submit btn btn-success"> <br><br>
             <div class="go-save">
                 <a href="/member/save" onclick="goSave()">회원가입</a>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <%@include file="component/footer.jsp"%>
