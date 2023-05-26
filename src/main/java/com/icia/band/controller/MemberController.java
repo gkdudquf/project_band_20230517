@@ -59,26 +59,14 @@ public class MemberController {
     public ResponseEntity login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO dto = memberService.loginCheck(memberDTO);
         System.out.println("dto = " + dto);
-
-        return new ResponseEntity<>(dto,HttpStatus.OK);
-
+        if (dto == null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } else {
+            session.setAttribute("loginNickname", dto.getMemberNickname());
+            session.setAttribute("loginLocal", dto.getMemberLocal());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
-
-
-
-
-//    @PostMapping("/login")
-//    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
-//        MemberDTO dto = memberService.loginCheck(memberDTO);
-//        System.out.println("dto = " + dto);
-//        if (dto == null) {
-//            return "/index";
-//        } else {
-//            session.setAttribute("loginNickname", dto.getMemberNickname());
-//            session.setAttribute("loginLocal", dto.getMemberLocal());
-//            return "/groupPages/myGroupList";
-//        }
-//    }
 
 
     @GetMapping("/myInfo")

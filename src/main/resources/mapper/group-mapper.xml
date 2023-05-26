@@ -17,6 +17,12 @@
         insert into group_file_table(originalFileName, storedFileName, groupId)
             values (#{originalFileName}, #{storedFileName}, #{groupId})
     </insert>
+
+    <select id="joinGroupFindAll" resultType="joinFile">
+        select * from group_table g, group_file_table f where g.id = f.groupId
+    </select>
+
+
 </mapper>
 
 

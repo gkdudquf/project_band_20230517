@@ -1,6 +1,7 @@
 package com.icia.band.controller;
 
 import com.icia.band.dto.GroupDTO;
+import com.icia.band.dto.groupJoinFileDTO;
 import com.icia.band.dto.MemberDTO;
 import com.icia.band.service.GroupService;
 import com.icia.band.service.MemberService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/group")
@@ -39,7 +41,16 @@ public class GroupController {
 
     @GetMapping("/myGroupList")
     public String myGroupList() {
+
         return "/groupPages/myGroupList";
+    }
+
+    @GetMapping("/list")
+    public String groupList(Model model) {
+        List<groupJoinFileDTO> joinGroupDTOList = groupService.groupFindAll();
+        System.out.println("joinGroupDTOList = " + joinGroupDTOList);
+        model.addAttribute("groupList", joinGroupDTOList);
+        return "/groupPages/groupList";
     }
 
     @PostMapping("/groupNameCheck")
@@ -52,6 +63,11 @@ public class GroupController {
         } else {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+    }
+
+    @GetMapping("/detail")
+    public String groupDetail(@RequestParam("id") String id) {
+        return "/groupPages/groupDetail";
     }
 
 

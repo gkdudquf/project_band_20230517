@@ -24,7 +24,7 @@
         <h2>로그인</h2> <br>
         <input type="text" id="login-user-email" name="memberEmail" placeholder="아이디" class="user-info"> <br>
         <input type="password" id="login-user-password" name="memberPassword" placeholder="비밀번호" class="user-info"> <br>
-        <input type="button" value="로그인" class="submit btn btn-success" onclick="login_check()"> <br><br>
+        <input type="button" value="로그인" class="btn btn-success" onclick="login_check()">
     </form>
 </div>
 
@@ -36,10 +36,10 @@
         const password = document.getElementById("login-user-password").value;
         $.ajax ({
             type: "post",
-            url: "/member/login",
+            url: "/member/login1",
             data: {
-                "email": email,
-                "password": password
+                "memberEmail": email,
+                "memberPassword": password
             },
             success: function (dto) {
                 console.log(dto);

@@ -3,9 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.icia.band.dto.MemberDTO" alias="member" />
+        <typeAlias type="com.icia.band.dto.MemberDTO" alias="member"/>
         <typeAlias type="com.icia.band.dto.GroupDTO" alias="group" />
         <typeAlias type="com.icia.band.dto.GroupFileDTO" alias="groupFile" />
         <typeAlias type="com.icia.band.dto.JoinMemberDTO" alias="join" />
+        <typeAlias type="com.icia.band.dto.groupJoinFileDTO" alias="joinFile" />
     </typeAliases>
 </configuration>

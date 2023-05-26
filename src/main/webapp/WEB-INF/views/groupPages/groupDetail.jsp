@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
@@ -20,16 +21,15 @@
 <%@include file="../component/header.jsp"%>
 
 
+
 <div id="section">
-<h6>내가 가입한 그룹 리스트</h6>
-    <button onclick="goMyGroupSave()">그룹만들기</button>
+    <h2>모임 디테일 페이지에용</h2>
+
 </div>
 
 <%@include file="../component/footer.jsp"%>
 </body>
 <script>
-    const goMyGroupSave = () => {
-        location.href = "/group/save";
-    }
+
 </script>
 </html>

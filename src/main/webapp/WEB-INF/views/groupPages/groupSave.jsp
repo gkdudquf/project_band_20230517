@@ -27,7 +27,10 @@
         <img id="uploadedImage" src="/resources/img/GroupSave.PNG" alt="" style="max-width: 500px; max-height: 200px;
              border-radius: 80px; display:block; margin:auto;"><br>
         <input type="file" name="groupProfileFile" multiple onchange="showImage(this);"> <br>
-
+<%--        <div class="mb-3">--%>
+<%--            <label for="boardFile" class="form-label">파일</label>--%>
+<%--            <input type="file" id="boardFile" class="form-control form-control-lg" name="boardFile" multiple  onchange="showImage(this);"> <br>--%>
+<%--        </div>--%>
         <br>
         <h6>모임이름</h6>
         <input type="text" id="group_name" name="groupName" onblur="group_name_check()" class="form-control">
