@@ -70,7 +70,11 @@ public class GroupController {
         return "/groupPages/groupDetail";
     }
 
-
+    @GetMapping("/localGroup")
+    public String localGroup(HttpSession session, Model model) {
+        String loginLocal = (String) session.getAttribute("loginNickname");
+        return "/groupPages/groupList";
+    }
 
 
 

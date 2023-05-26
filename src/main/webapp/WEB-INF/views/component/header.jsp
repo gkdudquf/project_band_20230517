@@ -36,7 +36,7 @@
                         <li><a class="dropdown-item" href="/member/myInfo">내 정보</a></li>
                         <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">소모임</a></li>
+                        <li><a class="dropdown-item" href="/group/localGroup">소모임</a></li>
                         <li><a class="dropdown-item" href="/group/list">전체모임</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/member/logout">로그아웃</a></li>

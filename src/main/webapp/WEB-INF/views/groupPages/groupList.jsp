@@ -40,9 +40,13 @@
                                     <img src="${pageContext.request.contextPath}/upload/${group.storedFileName}" alt="" style="max-height: 250px;">
                                     <div class="card-body p-4">
                                         <div class="text-center">
-                                            <h5 class="fw-bolder">${group.groupName}</h5>
-                                                모임소개 ${group.groupInfo}
+                                            <h5 class="fw-bolder">${group.groupName}</h5> <br>
                                         </div>
+                                        <div style="text-align: left">
+                                            모임지역: ${group.createMemberLocal} <br>
+                                            모임소개: ${group.groupInfo}
+                                        </div>
+
                                     </div>
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                         <div class="text-center">
