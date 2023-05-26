@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class GroupFileDTO {
-    private Long id;
+    private Long   id;
     private String originalFileName;
     private String storedFileName;
-    private Long groupId;
+    private Long   groupId;
 }

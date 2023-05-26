@@ -18,6 +18,7 @@
 </head>
 <body>
 <%@include file="../component/header.jsp"%>
+<%@include file="../component/nav.jsp"%>
 
 <div id="section">
 <h6>내가 가입한 그룹 리스트</h6>

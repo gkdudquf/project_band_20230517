@@ -20,6 +20,11 @@
         insert into member_table(memberEmail, memberPassword, memberNickname, memberName, memberLocal, memberMobile)
             values (#{memberEmail}, #{memberPassword}, #{memberNickname}, #{memberName}, #{memberLocal}, #{memberMobile})
     </insert>
+
+    <insert id="joinMemberSave" parameterType="join" useGeneratedKeys="true" keyProperty="id">
+        insert into join_member_table (joinMemberId, joinMemberNickname, joinGroupId, joinGroupName)
+            values (#{joinMemberId}, #{joinMemberNickname}, #{joinGroupId}, #{joinGroupName})
+    </insert>
 </mapper>
 
 

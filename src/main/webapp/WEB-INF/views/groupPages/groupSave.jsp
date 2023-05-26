@@ -24,7 +24,7 @@
         <h2>모임 생성하기</h2> <br>
     </div>
     <form style="width: 700px;" action="/group/save" method="post" class="container" enctype="multipart/form-data">
-        <img id="uploadedImage" alt="" style="max-width: 500px; max-height: 200px;
+        <img id="uploadedImage" src="/resources/img/GroupSave.PNG" alt="" style="max-width: 500px; max-height: 200px;
              border-radius: 80px; display:block; margin:auto;"><br>
         <input type="file" name="groupProfileFile" multiple onchange="showImage(this);"> <br>
 

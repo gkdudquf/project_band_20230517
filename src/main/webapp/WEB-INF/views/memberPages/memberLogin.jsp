@@ -20,11 +20,11 @@
 <%@include file="../component/header.jsp"%>
 
 <div id="section">
-    <form style="margin: auto;" action="/member/login" method="post" class="login-form">
+    <form style="margin: auto;" class="login-form">
         <h2>로그인</h2> <br>
         <input type="text" id="login-user-email" name="memberEmail" placeholder="아이디" class="user-info"> <br>
         <input type="password" id="login-user-password" name="memberPassword" placeholder="비밀번호" class="user-info"> <br>
-        <input type="submit" value="로그인" class="submit btn btn-success"> <br><br>
+        <input type="button" value="로그인" class="submit btn btn-success" onclick="login_check()"> <br><br>
     </form>
 </div>
 
@@ -41,7 +41,9 @@
                 "email": email,
                 "password": password
             },
-            success: function (res) {
+            success: function (dto) {
+                console.log(dto);
+                alert("로그인 성공");
                 location.href = "/group/myGroupList";
             },
             error: function () {

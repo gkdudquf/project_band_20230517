@@ -32,12 +32,13 @@ public class GroupController {
     public String groupSave(@ModelAttribute GroupDTO groupDTO, HttpSession session) throws IOException {
         String memberNickname = (String) session.getAttribute("loginNickname");
         MemberDTO memberDTO = memberService.nicknameCheck(memberNickname);
+        System.out.println("memberDTO = " + memberDTO);
         groupService.save(groupDTO, memberDTO);
-        return "redirect:/myGroupList";
+        return "redirect:/group/myGroupList";
     }
 
     @GetMapping("/myGroupList")
-    public String myGroupList(HttpSession session, Model model) {
+    public String myGroupList() {
         return "/groupPages/myGroupList";
     }
 

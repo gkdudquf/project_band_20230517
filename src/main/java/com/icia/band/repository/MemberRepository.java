@@ -1,5 +1,6 @@
 package com.icia.band.repository;
 
+import com.icia.band.dto.JoinMemberDTO;
 import com.icia.band.dto.MemberDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,7 @@ public class MemberRepository {
     }
 
 
+    public void joinMemberSave(JoinMemberDTO joinMemberDTO) {
+        sql.insert("Member.joinMemberSave", joinMemberDTO);
+    }
 }
